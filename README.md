@@ -41,15 +41,15 @@ It also features a configurable blocklist to automatically close requests whose 
 11. Go back to Slack, and change the Interactivity URL to your published web app URL and webAppSecret as the token=
 12. Go to your Accelo webhooks settings page (https://YOUR_SUBDOMAIN.accelo.com/?action=list_webhook_subscriptions&target=list_webhook_subscriptions) and create two new webhooks:
     - Event: `Request created`
-    - Payload URL: `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?token=YOUR_WEB_APP_SECRET&app=accelo&type=request_created`
-    - Content Type: `application/json`
-    - Secret: none
+        - Payload URL: `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?token=YOUR_WEB_APP_SECRET&app=accelo&type=request_created`
+        - Content Type: `application/json`
+        - Secret: none
 
 
     - Event: `Request status updated`
-    - Payload URL: `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?token=YOUR_WEB_APP_SECRET&app=accelo&type=request_status_updated`
-    - Content Type: `application/json`
-    - Secret: none
+        - Payload URL: `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?token=YOUR_WEB_APP_SECRET&app=accelo&type=request_status_updated`
+        - Content Type: `application/json`
+        - Secret: none
 
 ![Accelo Webhooks](https://github.com/Ignition-IT/Accelobot/blob/main/Images/create_accelo_webhook.png?raw=true)
 
