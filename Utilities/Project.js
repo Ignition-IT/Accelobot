@@ -7,14 +7,16 @@ var channels = {
   'Alerts': '',
   'blocklist': ''
 };
-
-function setVariables() {
+// run manually to set variables
+function initialSetup() {
   scriptProps.setProperties({
-    // 'webAppSecret': '', // create a random password for authentication to your web app
-    // 'slackBotToken': '', // Bot Token from your Slack app
-    // 'acceloUsername': '', // username from your Accelo API app
-    // 'acceloPassword': '' // password from your Accelo API app
+    'webAppSecret': '', // create a random password for authentication to your web app
+    'slackBotToken': '', // Bot Token from your Slack app
+    'acceloUsername': '', // username from your Accelo API app
+    'acceloPassword': '' // password from your Accelo API app
   });
+  matchUsernames();
+  getAcceloAccessToken();
 }
 
 function matchUsernames() {
@@ -46,7 +48,7 @@ function matchUsernames() {
   };
 }
 
-
+// set blocklist text here to automatically close requests that match
 var blocklist = [
   '[macOS Updates]',
   '[Windows Update]',
