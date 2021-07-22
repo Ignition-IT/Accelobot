@@ -156,14 +156,12 @@ const messageBuilder = {
         var issue = Accelo.issues.get(issueId, 'assignee(),title,status(),standing(),description');
         var assignee = getUser(issue.assignee.id).slackId;
         // push issue details
-        message.blocks.push({
+        message.blocks.splice(1, 0, {
           'type': 'section',
           'text': {
             'type': 'mrkdwn',
             'text':
-              `:ticket: <https://${acceloDomain}.accelo.com/?action=view_issue&id=${issueId}|${issue.title}>
-            Assigned to: <@${assignee}>\nStatus: \`${issue.status.title}\`
-            \`\`\`${issue.description.substring(0, 200)}...\`\`\``
+              `:ticket: <https://${acceloDomain}.accelo.com/?action=view_issue&id=${issueId}|${issue.title}>\nAssigned to: <@${assignee}>\nStatus: \`${issue.status.title}\`\n\`\`\`${issue.description.substring(0, 200)}...\`\`\``
           }
         });
         ;
