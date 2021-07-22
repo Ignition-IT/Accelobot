@@ -45,6 +45,7 @@ It also features a configurable blocklist to automatically close requests whose 
     - Content Type: `application/json`
     - Secret: none
 
+
     - Event: `Request status updated`
     - Payload URL: `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?token=YOUR_WEB_APP_SECRET&app=accelo&type=request_status_updated`
     - Content Type: `application/json`
