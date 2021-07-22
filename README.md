@@ -13,12 +13,16 @@ It also features a configurable blocklist to automatically close requests whose 
 
 ## Set Up Instructions
 
-1. Open your ![Slack Apps](https://api.slack.com/apps) page and create a new app. Select __From Manifest__, and paste the contents of ![slack_app_manifest.json](https://github.com/Ignition-IT/Accelobot). There are 2 variables in the `Interactivity URL` that you'll need to change later after your Google Script web app is published.
+1. Open your [Slack Apps](https://api.slack.com/apps) page and create a new app. Select __From Manifest__, and paste the contents of [slack_app_manifest.json](https://github.com/Ignition-IT/Accelobot). There are 2 variables in the `Interactivity URL` that you'll need to change later after your Google Script web app is published.
+
 ![Slack App Manifest](https://github.com/Ignition-IT/Accelobot/blob/main/Images/slack_app_manifest.png?raw=true)
+
 2. Install the app to your workspace and make note of the __Bot Token__. We'll need to add this to the Script Properties later.
+
 ![Install Slack App](https://github.com/Ignition-IT/Accelobot/blob/main/Images/install_slack_app.png?raw=true)
+
 3. Go to your Accelo API settings (https://YOUR_SUBDOMAIN.accelo.com/?action=edit_api_application&target=edit_api_application) and register a new app. Set the __Type__ to `Service`. Make note of the __Client ID__ and __Client Secret__.
-4. Make a copy of my example project: https://docs.google.com/spreadsheets/d/1xL16vynjG6JSvlGmTR1Ag38P15Yp9guMTV1gZw8Wj1c/edit?usp=sharing
+4. [Make a copy of my example project](https://docs.google.com/spreadsheets/d/1xL16vynjG6JSvlGmTR1Ag38P15Yp9guMTV1gZw8Wj1c/edit?usp=sharing)
 5. Open the Script Editor from __Tools > Script editor__
 6. Go to _Utilities/Project.gs_ and set up the following variables:
     - `acceloDomain`: set this to your Accelo instance subdomain (e.g. `company`, if your deployment is at `https://company.accelo.com`)
@@ -31,7 +35,9 @@ It also features a configurable blocklist to automatically close requests whose 
 8. `initialSetup()` also runs `matchUsernames()` to match up your Accelo users to Slack users. This function matches based on email, so make sure your users' Slack and Accelo emails are the same. Once this function is run, it creates a time-based trigger to automatically run itself every day, so when you onboard or offboard a new user it will match their accounts.
 9. `initialSetup()`also runs `getAcceloAccessToken()`, which calls the Accelo API to exchange your username and password for an access token. This function automatically sets a trigger to get a new access token 12 hours before your old one expires.
 10. Deploy your script as a web app and copy the URL. Set __Execute as__ to your email and __Who can access__ to `Anyone`. If you make any changes to the code, you'll need to edit the deployment and publish as a new version in order for your changes to be implemented for the web app.
+
 ![Deploy Web App](https://github.com/Ignition-IT/Accelobot/blob/main/Images/deploy_web_app.png?raw=true)
+
 11. Go back to Slack, and change the Interactivity URL to your published web app URL and webAppSecret as the token=
 12. Go to your Accelo webhooks settings page (https://YOUR_SUBDOMAIN.accelo.com/?action=list_webhook_subscriptions&target=list_webhook_subscriptions) and create two new webhooks:
     - Event: `Request created`
@@ -43,7 +49,9 @@ It also features a configurable blocklist to automatically close requests whose 
     - Payload URL: `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?token=YOUR_WEB_APP_SECRET&app=accelo&type=request_status_updated`
     - Content Type: `application/json`
     - Secret: none
+
 ![Accelo Webhooks](https://github.com/Ignition-IT/Accelobot/blob/main/Images/create_accelo_webhook.png?raw=true)
+
 13. Click __Test__ on the Request Created webhook and enter a valid Request ID. The first time you test, it won't send anything to Slack, but rather it should add itself to the channel you set for that request type. Test again, and it should send the message.
 14. Profit.
 
