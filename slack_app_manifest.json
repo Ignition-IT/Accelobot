@@ -1,0 +1,44 @@
+{
+    "_metadata": {
+        "major_version": 1,
+        "minor_version": 1
+    },
+    "display_information": {
+        "name": "Accelo",
+        "description": "Integration with Accelo",
+        "background_color": "#354f59"
+    },
+    "features": {
+        "app_home": {
+            "home_tab_enabled": false,
+            "messages_tab_enabled": false,
+            "messages_tab_read_only_enabled": false
+        },
+        "bot_user": {
+            "display_name": "Accelo",
+            "always_online": true
+        }
+    },
+    "oauth_config": {
+        "scopes": {
+            "bot": [
+                "channels:read",
+                "chat:write",
+                "groups:read",
+                "team:read",
+                "users:read",
+                "users:read.email",
+                "channels:join"
+            ]
+        }
+    },
+    "settings": {
+        "interactivity": {
+            "is_enabled": true,
+            "request_url": "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?token=YOUR_WEB_APP_SECRET&app=slack&type=interaction"
+        },
+        "org_deploy_enabled": false,
+        "socket_mode_enabled": false,
+        "token_rotation_enabled": false
+    }
+}
